@@ -8,17 +8,17 @@ class Counter
 {
 public:
 
-    int usCount;
+    
 
     Counter(); // конструктор без параметров
 
     Counter(int Count_); // конструктор с параметром
 
-    int get_count();
+    void count();
 
-    int get_countUpp();
+    void countUpp();
 
-    int get_countDown();
+    void countDown();
 
     int get_curCount()
     {
@@ -40,22 +40,22 @@ Counter::Counter()
     Count = 1;
 }
 
-int Counter::get_count()
+void Counter::count()
 {
     std::cout << "Введите начальное значение счётчика: ";
+    int usCount;
     std::cin >> usCount;
     Count = usCount;
-    return Count;
 }
 
-int Counter::get_countUpp()
+void Counter::countUpp()
 {
-    return Count++;
+    Count++;
 }
 
-int Counter::get_countDown()
+void Counter::countDown()
 {
-    return Count--;
+    Count--;
 }
 
 
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 
     std::string ch_str;
 
-    Counter* counter = new Counter;
+    Counter* counter = nullptr;
 
     std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
 
@@ -75,14 +75,15 @@ int main(int argc, char** argv)
 
     if (ch_str == "да")
     {
-        Counter Counter(int);
+        int c = 0;
 
-        counter->get_count();
+        counter = new Counter(c);
 
+        counter->count();
     }
     else
     {
-        Counter Counter;
+        counter = new Counter;
     }
     std::string action;
 
@@ -96,16 +97,14 @@ int main(int argc, char** argv)
 
         if (action == "+")
         {
-            counter->get_countUpp();
+            counter->countUpp();
         };
         if (action == "-")
         {
-            counter->get_countDown();
+            counter->countDown();
         };
         if (action == "=")
         {
-            counter->get_curCount();
-
             std::cout << counter->get_curCount();
 
             std::cout << std::endl;
